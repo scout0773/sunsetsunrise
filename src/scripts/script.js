@@ -76,10 +76,9 @@ function fetchData(latitude, longitude, locationName) {
         timezone,
       } = data.results;
 
-      const condensedLocationName = condenseLocationName(locationName);
 
       resultContainer.innerHTML = `
-                <h3>${condensedLocationName}</h3>
+                <h3>${display_name}</h3>
                 <h4>Today:</h4>
                 <p>Sunrise: ${sunrise}</p>
                 <p>Sunset: ${sunset}</p>
@@ -99,16 +98,4 @@ function fetchData(latitude, longitude, locationName) {
 
       resultContainer.innerHTML = `<p>Error: Unable to fetch sunrise sunset data</p>`;
     });
-}
-
-function condenseLocationName(fullLocationName) {
-  const parts = fullLocationName.split(", ");
-
-  if (!isNaN(parts[1])) {
-    parts.splice(1, 1);
-  }
-
-  const condensedLocationName = parts.join(", ");
-
-  return condensedLocationName;
 }
