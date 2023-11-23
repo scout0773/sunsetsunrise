@@ -2,7 +2,33 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("searchBtn").addEventListener("click", function () {
     fetchCoordinatesAndData();
   });
+
+  document.getElementById("geolocationBtn").addEventListener("click", function () {
+    fetchCurrentLocationAndData();
 });
+});
+
+function fetchCurrentLocationAndData() {
+    if ("geolocation" in navigator) {
+        const resultContainer = document.getElementById('resultContainer');
+        resultContainer.innerHTML = '<p>Loading...</p>';
+
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                const { latitude, longitude } = position.coords;
+
+                fetchData(latitude, longitude, "Current Location");
+            },
+            error => {
+                console.error('Geolocation Error:', error);
+
+                resultContainer.innerHTML = `<p>Error: Unable to fetch coordinates for current location</p>`;
+            }
+        );
+    } else {
+        resultContainer.innerHTML = `<p>Error: Geolocation is not supported in your browser.</p>`
+    }
+}
 
 function fetchCoordinatesAndData() {
   const addressInput = document.getElementById("locationSearch");
@@ -47,7 +73,7 @@ function fetchCoordinatesAndData() {
     });
 }
 
-function fetchData(latitude, longitude, locationName) {
+function fetchData(latitude, longitude, display_name) {
   const apiUrl = `https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}`;
 
   const resultContainer = document.getElementById("resultContainer");
