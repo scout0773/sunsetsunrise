@@ -7,7 +7,7 @@ Saw an Upwork job posted about creating a website that allows you to accurately 
 Allows you to view multiple different times such as sunrise, sunset, first light, last light, dawn, dusk, solar noon, golden hour, day length, and the timezone.
 
 <center>
-    <img src="/testsunset.png" width="700">
+    <img src="./testsunset.png" width="700">
 </center>
 
 ## Help
