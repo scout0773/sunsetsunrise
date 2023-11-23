@@ -106,17 +106,16 @@ function fetchData(latitude, longitude, display_name) {
       resultContainer.innerHTML = `
                 <h3>${display_name}</h3>
                 <h4>Today:</h4>
-                <p>Sunrise: ${sunrise}</p>
-                <p>Sunset: ${sunset}</p>
-                <p>First Light: ${first_light}</p>
-                <p>Last Light: ${last_light}</p>
-                <p>Dawn: ${dawn}</p>
-                <p>Dusk: ${dusk}</p>
-                <p>Solar Noon: ${solar_noon}</p>
-                <p>Golden Hour: ${golden_hour}</p>
-                <p>Day Length: ${day_length}</p>
+                <p>Sunrise: ${moment(sunrise, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Sunset: ${moment(sunset, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>First Light: ${moment(first_light, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Last Light: ${moment(first_light, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Dawn: ${moment(dawn, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Dusk: ${moment(dusk, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Solar Noon: ${moment(solar_noon, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Golden Hour: ${moment(golden_hour, "hh:mm:ss A").format("h:mm:ss A")}</p>
+                <p>Day Length: ${moment(day_length, "hh:mm:ss A").format("h:mm:ss A")}</p>
                 <p>Timezone: ${timezone}</p>
-                <!-- Add more data as needed -->
             `;
     })
     .catch((error) => {
